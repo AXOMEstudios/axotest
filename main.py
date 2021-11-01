@@ -1,11 +1,19 @@
+# This is an example file to present the basic functionality of AXOtest.
+
+# to use AXOtest, import it
 import axotest
 
+# for each test, create a class from axotest.Unit
 class Homepage(axotest.Unit):
   def __init__(self):
+    # define a name and a failure message
     self.name = "Homepage test"
     self.failure = "failed"
+    
+  # this function is being run by axotest
   def test(self):
     X, Y = 21, 42
+    # assert
     assert X*2 == Y
 
 class Faculty(axotest.Unit):
@@ -29,6 +37,7 @@ class Internet(axotest.Unit):
     except Exception:
       assert False
 
+# at the end, run axotest.run_test passing a list of all objects to run them
 axotest.run_tests([
   Homepage(),
   Faculty(),
@@ -37,3 +46,5 @@ axotest.run_tests([
   Internet("Lollipop"),
   Internet("https://www.axome.de/")
 ])
+
+# that's it
